@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - name: Creates directory
+      file: path=/home/random-user/test state=directory
