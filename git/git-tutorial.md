@@ -5,6 +5,12 @@
 - ```git pull origin branchname``` : Pull latest change from remote repo
 - ```git push origin branchname``` : Pushing latest change to remote repo
 - ```git diff``` : Show changes between commits
+  - ```git diff filename``` : For a Filename
+  - ```git diff HEAD``` : From last commit
+  - ```git diff HEAD filename``` : From last commit, for a specific file
+  - ```git diff --staged HEAD``` : From staging area
+  - ```git diff --staged HEAD filename``` : From staging area but for a specific file
+  - ```git diff firstCommitID secondCommitID``` : Between 2 commits
 - ```git add .``` : For adding any directory and file(s)
 - ```git commit -m 'random message'``` : For committing any file(s)
   - ```git commit -am 'amending commit'``` : For amending previous commit!
@@ -26,3 +32,5 @@
   - ```git config --global user.name 'Devang tomar'``` : For configuring username
   - ```git config --global user.email 'devangtomar123@gmail.com'``` : For configuring email
   - ```git config --global alias.someCommand "log --all -graph --decorate --oneline"``` : Now if you execute ```git someCommand``` will run ```git log --all -graph --decorate --oneline```
+
+-
