@@ -22,3 +22,7 @@
   - ```git checkout -b branchname``` : To create a new branch and switch to it in 1-go
 - ```git merge``` : For merging 2 branches together.. execute when in feature branch
 - ```git show commitID``` : Checking commit info
+- ```git config``` : For changing configuration for git bash
+  - ```git config --global user.name 'Devang tomar'``` : For configuring username
+  - ```git config --global user.email 'devangtomar123@gmail.com'``` : For configuring email
+  - ```git config --global alias.someCommand "log --all -graph --decorate --oneline"``` : Now if you execute ```git someCommand``` will run ```git log --all -graph --decorate --oneline```
