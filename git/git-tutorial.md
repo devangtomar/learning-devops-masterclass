@@ -39,6 +39,9 @@
 - ```git rebase master``` : Similar to git merge (used for merging 2 branches).. it moves entire feature branch to begin on the tip of the master branch.. it rebase re-writes the project history y creating brand new commits for each commit in the original branch.
 **Advantage** : Much cleaner project history as it eliminates the unnecessary merge commits required by git merge and Rebasing also results in a perfectly linear project history
 </br></br>
+  - **Walk-through** : ```git checkout feature_branch``` and  ```git rebase master```
+  - ```git rebase --continue``` and ```git rebase --abort```
+</br></br>
 - ```git show commitID``` : Checking commit info
 - ```git config``` : For changing configuration for git bash
   - ```git config --global user.name 'Devang tomar'``` : For configuring username
