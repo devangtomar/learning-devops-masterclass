@@ -11,6 +11,7 @@
   - ```git diff --staged HEAD``` : From staging area
   - ```git diff --staged HEAD filename``` : From staging area but for a specific file
   - ```git diff firstCommitID secondCommitID``` : Between 2 commits
+  - ```git diff HEAD HEAD^``` : Between last commit and HEAD
 - ```git add .``` : For adding any directory and file(s)
 - ```git commit -m 'random message'``` : For committing any file(s)
   - ```git commit -am 'amending commit'``` : For amending previous commit!
@@ -24,6 +25,9 @@
 - ```git mv filename new-filename``` : For moving a git added file.. without : mv and git add
 - ```git rm filename``` : For deleting any file already in git
 - ```git branch branchname``` : For creating a branch
+  - ```git branch -a``` : List all git branches
+  - ```git branch -m oldBranchName newBranchName``` : For renaming a branch
+  - ```git branch -d branchname``` : For deleting a branch (PS : switch branch before deletion)
 - ```git checkout branchname``` : For changing to a different branch
   - ```git checkout -b branchname``` : To create a new branch and switch to it in 1-go
 - ```git merge``` : For merging 2 branches together.. execute when in feature branch
@@ -32,5 +36,3 @@
   - ```git config --global user.name 'Devang tomar'``` : For configuring username
   - ```git config --global user.email 'devangtomar123@gmail.com'``` : For configuring email
   - ```git config --global alias.someCommand "log --all -graph --decorate --oneline"``` : Now if you execute ```git someCommand``` will run ```git log --all -graph --decorate --oneline```
-
--
