@@ -25,6 +25,10 @@
   - ```git stash apply``` : For applying stash (then git add > git commit > git push )
   - ```git stash drop``` : For dropping stash changes
   - ```git stash -u``` : For stashing untrack file
+  - ```git stash -a``` : For stashing all file
+  - ```git stash pop``` : For only dropping last stash
+</br>
+</br>
 - ```git revert``` :
   - ```git revert HEAD filename``` : For reverting commit for a particular file
   - ```git revert HEAD~``` : For any recent commit changes
@@ -57,3 +61,7 @@
   - ```git config --global user.name 'Devang tomar'``` : For configuring username
   - ```git config --global user.email 'devangtomar123@gmail.com'``` : For configuring email
   - ```git config --global alias.someCommand "log --all -graph --decorate --oneline"``` : Now if you execute ```git someCommand``` will run ```git log --all -graph --decorate --oneline```
+</br></br>
+- ```git tag tagName``` : Tas are reference that point to specific points in git history. Tagging is generally used to capture a point in history that is used for a marked version release (eg., v1.1.0)
+    - ```git tag --list``` : For listing all tags
+    - ```git tag --delete tagName``` : For deleting specific tag
