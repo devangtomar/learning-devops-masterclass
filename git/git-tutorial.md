@@ -62,6 +62,10 @@
   - ```git config --global user.email 'devangtomar123@gmail.com'``` : For configuring email
   - ```git config --global alias.someCommand "log --all -graph --decorate --oneline"``` : Now if you execute ```git someCommand``` will run ```git log --all -graph --decorate --oneline```
 </br></br>
-- ```git tag tagName``` : Tas are reference that point to specific points in git history. Tagging is generally used to capture a point in history that is used for a marked version release (eg., v1.1.0)
-    - ```git tag --list``` : For listing all tags
-    - ```git tag --delete tagName``` : For deleting specific tag
+- ```git tag tagName``` : Tas are reference that point to specific points in git history. Tagging is generally used to capture a point in history that is used for a marked version release (eg., v1.1.0). They happens after ```git add``` and ```git commit```
+  - ```git tag --list``` : For listing all tags
+  - ```git tag --delete tagName``` : For deleting specific tag
+  - ```git tag -a v.1.0``` and ```git show v.1.0``` : For annotated tag and showing it
+  - ```git diff v1.0.1 v1.0.2``` : Compare tags
+  - ```git tag -a beta.0.0.9 commitID``` : Add a tag to specific commit
+  - ```git tag -a beta.0.0.9 -f commitID``` : Update tag forcefully
