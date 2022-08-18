@@ -72,6 +72,12 @@
 
 **Git hacks :**
 
-- ```git reset --soft commitID``` : Revert to a specific commit.. all new changes move to staging area
-- ```git reset commitID``` : Revert to a specific commit.. all new changes will move to working area
-- ```git reset --hard commitID``` : Revert to a specific commit.. all new changes erased [No data recovery]
+- **Reverting to a specific commit** :
+  - ```git reset --soft commitID``` : Revert to a specific commit.. all new changes move to staging area
+  - ```git reset commitID``` : Revert to a specific commit.. all new changes will move to working area
+  - ```git reset --hard commitID``` : Revert to a specific commit.. all new changes erased [No data recovery]
+</br></br>
+- **More commands** :
+
+  - ```git reflog``` : All git history
+  - ```git clean -df``` : For deleting all file from directory
