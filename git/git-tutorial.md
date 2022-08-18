@@ -69,3 +69,9 @@
   - ```git diff v1.0.1 v1.0.2``` : Compare tags
   - ```git tag -a beta.0.0.9 commitID``` : Add a tag to specific commit
   - ```git tag -a beta.0.0.9 -f commitID``` : Update tag forcefully
+
+**Git hacks :**
+
+- ```git reset --soft commitID``` : Revert to a specific commit.. all new changes move to staging area
+- ```git reset commitID``` : Revert to a specific commit.. all new changes will move to working area
+- ```git reset --hard commitID``` : Revert to a specific commit.. all new changes erased [No data recovery]
