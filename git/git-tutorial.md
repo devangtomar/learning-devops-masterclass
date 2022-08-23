@@ -12,10 +12,13 @@
   - ```git revert HEAD filename``` : For reverting commit for a particular file
   - ```git revert HEAD~``` : For any recent commit changes
 - ```git log``` : Checking previous commits logs etc
-  - ```git log --oneline --decorate --graph``` : For getting graph of git history
+  - ```git log --all --oneline --decorate --graph``` : For getting graph of git history
+  - ```git log -- filename``` : For checking git history of a file
 - ```git status``` : Check current status for git
 - ```git mv filename new-filename``` : For moving a git added file.. without : mv and git add
 - ```git rm filename``` : For deleting any file already in git
 - ```git branch branchname``` : For creating a branch
 - ```git checkout branchname``` : For changing to a different branch
   - ```git checkout -b branchname``` : To create a new branch and switch to it in 1-go
+- ```git merge``` : For merging 2 branches together.. execute when in feature branch
+- ```git show commitID``` : Checking commit info
