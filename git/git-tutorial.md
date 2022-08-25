@@ -27,11 +27,10 @@
   - ```git stash -u``` : For stashing untrack file
   - ```git stash -a``` : For stashing all file
   - ```git stash pop``` : For only dropping last stash
-</br>
-</br>
+</br></br>
 - ```git revert``` :
-    - ```git revert HEAD filename``` : For reverting commit for a particular file
-    - ```git revert HEAD~``` : For any recent commit changes
+  - ```git revert HEAD filename``` : For reverting commit for a particular file
+  - ```git revert HEAD~``` : For any recent commit changes
 - ```git log``` : Checking previous commits logs etc
   - ```git log --all --oneline --decorate --graph``` : For getting graph of git history
   - ```git log -- filename``` : For checking git history of a file
