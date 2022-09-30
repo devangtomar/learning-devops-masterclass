@@ -49,12 +49,18 @@ The cost is determined by the number of nodes. Up to 10 nodes can be handled for
 
 Below are the installation steps for MacOS
 
+```bash
 $ brew update
 $ brew install ansible
+```
+
 
 Post installation, for confirmation :
 
-*$ ansible -version*
+```bash
+`$ ansible -version`
+```
+
 
 Now Create an SSH connection to the target servers now.
 
@@ -62,12 +68,15 @@ Now Create an SSH connection to the target servers now.
 
 Make sure you can successfully ssh to the server and connect using a certificate.
 
+```bash
 $ ssh -i /root/.ssh/your.key -t root@your\_server\_ip 'sudo mkdir -p /root/.ssh'
 
 $ scp -i /root/.ssh/your.key /root/.ssh/id\_rsa.pub root@your\_server\_ip:/root/.ssh/id\_rsa.pub
 
 $ ssh -i /root/.ssh/your.key -t root@your\_server\_ip 'cat /root/.ssh/id\_rsa.pub | sudo tee -a /root/.ssh/authorized\_keys ;echo "PermitRootLogin yes" | sudo tee -a /etc/ssh/sshd\_config'
 ssh-keyscan yourserver | sudo tee -a /root/.ssh/known\_hosts
+```
+
 
 **Further configuration 🎰**
 
@@ -86,6 +95,8 @@ This is the location of the default configuration file. You might need to modify
 
 Edit hosts file on */etc/ansible/hosts* and add your target server
 
+
+```bash
 random-servers
 
 [dbservers]
@@ -96,23 +107,33 @@ three.example.com
 [webservers]
 foo.example.com
 bar.example.com
+```
+
 
 Once this is finished, let’s use the command below to ping all of the specified remote hosts.
 
 ![](Aspose.Words.51f35a84-d0a5-4a81-8919-d6836be446ce.007.jpeg)
 
+
+```bash
 $ ansible all -m ping
+```
 
 Ansible sends a ping command to a remote host and displays the output as follows:
 
+```bash
 servername | SUCCESS => {
 "changed": false,
 "ping": "pong"
 }
+```
 
 By substituting all with a group name, we can even construct groups in the inventory file and run ansible operations. The server in the example below is our group name as it appears in the inventory file.
 
+```bash
 $ ansible server -m ping
+```
+
 
 **Writing your first ansible playbook 🧾**
 
@@ -124,43 +145,55 @@ Note : Please use caution during indentation when building a playbook. ⚠️
 
 A sample playbook :
 
+```yml
 \# first-playbook-.yml- name: creating a test file
-`  `hosts: all
-`  `become: yes
-`  `tasks:
-`    `- name: Create a test file in dir : '/home/user/random/file.txt' 
-`      `copy:
-`        `content: This is my first playbook
-`        `dest: /home/username/random/file.txt
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create a test file in dir : '/home/user/random/file.txt' 
+      copy:
+        content: This is my first playbook
+        dest: /home/username/random/file.txt
+```
 
 How has the aforementioned playbook been set up?
 
+
+```yml
 \# first-playbook-.yml- name: <Name of Play>
-`  `hosts: <Management Host>
-`  `become: <privilege escalation>
-`  `tasks:
-`    `- name: <Name of task> 
-`      `<module>:
-`         `<arg-1>
-`         `<arg-2>
+  hosts: <Management Host>
+  become: <privilege escalation>
+  tasks:
+    - name: <Name of task> 
+      <module>:
+         <arg-1>
+         <arg-2>
+```
 
 or like:
 
-\---
-\- hosts: [hosts]
-`  `tasks:
-`    `- [first task]
-`    `- [second task]
+```yml
+- hosts: [hosts]
+   tasks:
+    - [first task]
+    - [second task]
+```
 
 The syntax can be checked before executing.
 
+```bash
 $ ansible-playbook --syntax-check first-playbook-.yml
+```
+
 
 **Now running the Ansible playbook** 
 
 To run this playbook
 
+```bash
 $ ansible-playbook first-playbook-.yml
+```
+
 
 We obtain the following outcome when we run the aforementioned playbook using the command “ansible-playbook playbook.yml.” Getting information is the initial outcome of this. This occurs because ansible runs a unique module called “setup” prior to carrying out any action. 
 
@@ -168,10 +201,13 @@ We obtain the following outcome when we run the aforementioned playbook using th
 
 This module establishes a connection to a remote host and collects a variety of data, including IP address, disc space, CPU, and other details. After doing this, the test directory is created by running our create directory job.
 
+
+```bash
 PLAY [all] \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*TASK [Gathering Facts] \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 ok: [webservers]TASK [Creates directory] \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 changed: [webservers]PLAY RECAP \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 webservers             : ok=2    changed=2    unreachable=0    failed=0
+```
 
 ![](Aspose.Words.51f35a84-d0a5-4a81-8919-d6836be446ce.009.jpeg)
 
@@ -187,12 +223,17 @@ Instead of using playbooks, these activities employ modules to quickly perform a
 
 For pinging all nodes : 
 
+```bash
 $ ansible all -m ping# format of command
 $ ansible **[**host**-**pattern**]**  -m **[**module**]** -a "[module options]"  -i     "[inventory]"
+```
+
 
 To make certain that if a ‘httpd’ service is initiated on each webserver:
 
+```bash
 $ ansible all -m ansible.builtin.service -a "name=httpd state=started"
+```
 
 Congratulations! You completed running your first Ansible playbook with success. Learning Ansible opens up countless future possibilities. This is only a straightforward script, but you may expand it to create a larger infrastructure by including additional modules. 
 
