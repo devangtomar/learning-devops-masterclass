@@ -24,3 +24,18 @@ Terraform prints output values to the screen when you apply your configuration. 
 instance_id = "i-0bf954919ed765de1"
 instance_public_ip = "54.186.202.254"
 ```
+
+## TFL lanaguage
+
+The syntax of the Terraform language consists of only a few basic elements:
+
+```terraform
+resource "aws_vpc" "main" {
+  cidr_block = var.base_cidr_block
+}
+
+<BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>" {
+  # Block body
+  <IDENTIFIER> = <EXPRESSION> # Argument
+}
+```
