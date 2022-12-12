@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  mydatabases:
+  mydatabase:
     image: mysql:latest
     restart: always
     volumes:
